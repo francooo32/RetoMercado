@@ -28,14 +28,8 @@ public class MutantApiRestController {
 	MutantServices mutantSrv;
 	
 	@GetMapping()
-	public ResponseEntity<ArrayList<Adn>> getAllWeathers(@RequestParam(name="secuencia", required=false) List<String> secuencia) {
+	public ResponseEntity<ArrayList<Adn>> getAllSecuences(@RequestParam(name="secuencia", required=false) List<String> secuencia) {
 		ArrayList<Adn> ListMutant = mutantSrv.getAllSecuences();
-		ArrayList<Adn> ListWeatherToRemove = new ArrayList<>();
-		
-		if(secuencia != null) {
-		}
-		
-		ListMutant.removeAll(ListWeatherToRemove);
 		
 		return new ResponseEntity<>(ListMutant, HttpStatus.OK);
 	}

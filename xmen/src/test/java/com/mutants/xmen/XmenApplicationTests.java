@@ -53,7 +53,7 @@ public class XmenApplicationTests {
     }
 
     @Test
-    public void testWeatherEndpointWithPOSTMutant() throws Exception {
+    public void testSecuenceEndpointWithPOSTMutant() throws Exception {
         Adn expectedRecord = getTestData().get("mutant");
         Adn actualRecord = om.readValue(mockMvc.perform(post("/mutant")
                 .contentType("application/json")
@@ -66,7 +66,7 @@ public class XmenApplicationTests {
     }
     
     @Test
-    public void testWeatherEndpointWithPOSTHuman() throws Exception {
+    public void testSecuenceEndpointWithPOSTHuman() throws Exception {
         Adn expectedRecord = getTestData().get("human");
         Adn actualRecord = om.readValue(mockMvc.perform(post("/mutant")
                 .contentType("application/json")
@@ -79,7 +79,7 @@ public class XmenApplicationTests {
     }
 
     @Test
-    public void testWeatherEndpointWithGETStats() throws Exception {
+    public void testSecuenceEndpointWithGETStats() throws Exception {
         Map<String, Adn> data = getTestData();
         List<Adn> expectedRecordsMutants = new ArrayList<>();
 
