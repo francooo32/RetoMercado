@@ -36,11 +36,20 @@ si no la tiene, copiar y reemplazar.
 
 6- Utiliza base de datos H2 levantada en memoria, utilizando postman (o su preferido), realizar un POST con valores de cadena de ADN en formato Json con 
 la siguiente URL http://localhost:8080/mutant, Ejemplo:
+
 {
-"secuencia" : ["AGGTTS", "AGGGTS", "AGGGGS"] 
+"secuencia" : ["AGGTTC", "AGGGTC", "AGGGGC"] 
 }
 
-debe devolver si es mutante o no.
+debe devolver si es mutante o no, en este caso especifico devuelve que "es mutante".
+
+{
+"secuencia" : ["AGGTTC", "AGGGTC", "AGGCCC"] 
+}
+
+el siguiente ejemplo devuelve "403 forbbiden" no es mutante.
+
+NOTA: Es mutante cuando por lo menos se encuentra mas de una secuencia con 4 letras iguales, solo se analizan las letras (A,T,C,G).
 
 7- En la URL http://localhost:8080/mutant/stats podemos realizar un GET que debe devolver cuantos mutantes y humanos fueron detectados hasta el momento.
 
