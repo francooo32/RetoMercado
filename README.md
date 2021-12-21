@@ -6,27 +6,27 @@ Nota: La api no cuenta con URL puesto aun no pudo ser deployada, pruebas deben h
 
 1- Descargar el proyecto en zip, extraer.
 
-2- Abrir el proyecto extraido con un IDE o clonar el proyecto en el workspace local desde la git URL:https://github.com/francooo32/RetoMercado.git 
+2- Abrir el proyecto extraido con un IDE o clonar el proyecto en el workspace local desde la git URL:https://github.com/francooo32/RetoMercado.git <br />
 Utilizar java 8, maven 2.
 
-3- Crear la config run de maven 2:
-*Directorio base--> proyecto local (xmen)
-*Metas --> clean install
-*JRE --> por defecto (recomendado 8 para arriba)
-*Confiracion de usuario --> por defecto
+3- Crear la config run de maven 2: 
+*Directorio base--> proyecto local (xmen) <br />
+*Metas --> clean install <br />
+*JRE --> por defecto (recomendado 8 para arriba) <br />
+*Confiracion de usuario --> por defecto <br />
 
 4- Revisar el application.properties, debe contener la siguiente config:
 
 **
-server.port: 8080
-server.address=0.0.0.0
-spring.h2.console.enabled=true
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-spring.jpa.hibernate.ddl-auto = create
+server.port: 8080 <br />
+server.address=0.0.0.0 <br />
+spring.h2.console.enabled=true <br />
+spring.datasource.url=jdbc:h2:mem:testdb <br />
+spring.datasource.driverClassName=org.h2.Driver <br />
+spring.datasource.username=sa <br />
+spring.datasource.password= <br />
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect <br />
+spring.jpa.hibernate.ddl-auto = create <br />
 
 **
 
@@ -41,7 +41,13 @@ la siguiente URL http://localhost:8080/mutant, Ejemplo:
 "secuencia" : ["AGGTTC", "AGGGTC", "AGGGGC"] 
 }
 
-debe devolver si es mutante o no, en este caso especifico devuelve que "es mutante".
+o
+
+{
+"secuencia" : ["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCTCCA","TCACTG"] 
+}
+
+debe devolver si es mutante o no, en estos casos especificos devuelve que "es mutante".
 
 {
 "secuencia" : ["AGGTTC", "AGGGTC", "AGGCCC"] 
