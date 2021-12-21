@@ -15,9 +15,26 @@ Utilizar java 8, maven 2.
 *JRE --> por defecto (recomendado 8 para arriba)
 *Confiracion de usuario --> por defecto
 
-4- Luego de correr la configuracion, correr la aplicacion como java project o spring project.
+4- Revisar el application.properties, debe contener la siguiente config:
 
-5- Utiliza base de datos H2 levantada en memoria, utilizando postman (o su preferido), realizar un POST con valores de cadena de ADN en formato Json con 
+**
+server.port: 8080
+server.address=0.0.0.0
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto = create
+
+**
+
+si no la tiene, copiar y reemplazar.
+
+5- Luego de correr la configuracion, correr la aplicacion como java project o spring project.
+
+6- Utiliza base de datos H2 levantada en memoria, utilizando postman (o su preferido), realizar un POST con valores de cadena de ADN en formato Json con 
 la siguiente URL http://localhost:8080/mutant, Ejemplo:
 {
 "secuencia" : ["AGGTTS", "AGGGTS", "AGGGGS"] 
@@ -25,8 +42,8 @@ la siguiente URL http://localhost:8080/mutant, Ejemplo:
 
 debe devolver si es mutante o no.
 
-6- En la URL http://localhost:8080/mutant/stats podemos realizar un GET que debe devolver cuantos mutantes y humanos fueron detectados hasta el momento.
+7- En la URL http://localhost:8080/mutant/stats podemos realizar un GET que debe devolver cuantos mutantes y humanos fueron detectados hasta el momento.
 
-7- Ejecutar los Junit test locales, se puede correr la clase entera con "click derecho sobre la clase, run as JUnit test" o correr un metodo especifico,
+8- Ejecutar los Junit test locales, se puede correr la clase entera con "click derecho sobre la clase, run as JUnit test" o correr un metodo especifico,
 "nos situamos en el metodo de la clase, click derecho y run as JUnit test. 
 
