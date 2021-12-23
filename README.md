@@ -11,7 +11,7 @@ Utilizar java 8, maven 2.
 
 3- Crear la config run de maven 2: 
 *Directorio base--> proyecto local (xmen) <br />
-*Metas --> clean install <br />
+*Metas --> clean install -Dmaven.test.skip=true <br />
 *JRE --> por defecto (recomendado 8 para arriba) <br />
 *Confiracion de usuario --> por defecto <br />
 
