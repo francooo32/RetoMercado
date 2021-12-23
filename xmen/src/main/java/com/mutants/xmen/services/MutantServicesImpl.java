@@ -61,10 +61,12 @@ import lombok.AllArgsConstructor;
 			
 			AdnCode code = new AdnCode();
 			
-			ArrayList<Long> secuenceList = new ArrayList<Long>();
+			ArrayList<String> secuenceValidated = new ArrayList<String>();
 			
 			
 			for(String secuencia : secuences){
+				
+				ArrayList<Long> secuenceList = new ArrayList<Long>();
 				
 				code.setCodeA(secuencia.chars().filter(x -> x == 'A').count());
 				secuenceList.add(code.getCodeA());
@@ -79,6 +81,12 @@ import lombok.AllArgsConstructor;
 				secuenceList.add(code.getCodeG());
 				
 				if(validateSecuence(secuenceList)) {
+					
+					secuenceValidated.add(secuencia);
+				}
+				
+				if(secuenceValidated.size() >= 2) {
+					
 					return true;
 				}
 			}
@@ -100,8 +108,6 @@ import lombok.AllArgsConstructor;
 			}
 			
 			return false;
-			
-			
 		}
 
 	}
