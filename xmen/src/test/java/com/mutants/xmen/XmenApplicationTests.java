@@ -66,11 +66,37 @@ public class XmenApplicationTests {
     }
     
     @Test
+    public void testSecuenceEndpointWithPOSTMutant2secuences() throws Exception {
+        Adn expectedRecord = getTestData().get("mutantTwo");
+        Adn actualRecord = om.readValue(mockMvc.perform(post("/mutant")
+                .contentType("application/json")
+                .content(om.writeValueAsString(getTestData().get("mutantTwo"))))
+                .andDo(print())
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString(), Adn.class);
+
+        Assert.assertTrue(new ReflectionEquals(expectedRecord, "id").matches(actualRecord));
+        assertEquals(true, mutantRepository.findById(actualRecord.getId()).isPresent());
+    }
+    
+    @Test
     public void testSecuenceEndpointWithPOSTHuman() throws Exception {
         Adn expectedRecord = getTestData().get("human");
         Adn actualRecord = om.readValue(mockMvc.perform(post("/mutant")
                 .contentType("application/json")
                 .content(om.writeValueAsString(getTestData().get("human"))))
+                .andDo(print())
+                .andExpect(status().isForbidden()).andReturn().getResponse().getContentAsString(), Adn.class);
+
+        Assert.assertTrue(new ReflectionEquals(expectedRecord, "id").matches(actualRecord));
+        assertEquals(true, mutantRepository.findById(actualRecord.getId()).isPresent());
+    }
+    
+    @Test
+    public void testSecuenceEndpointWithPOSTHuman2Secuences() throws Exception {
+        Adn expectedRecord = getTestData().get("humanTwo");
+        Adn actualRecord = om.readValue(mockMvc.perform(post("/mutant")
+                .contentType("application/json")
+                .content(om.writeValueAsString(getTestData().get("humanTwo"))))
                 .andDo(print())
                 .andExpect(status().isForbidden()).andReturn().getResponse().getContentAsString(), Adn.class);
 
@@ -108,8 +134,8 @@ public class XmenApplicationTests {
 
         Adn mutant = new Adn(
         		"es mutante",
-                Arrays.asList("AGGTCT", "AGGGTT","ATGGCC", "ATCCCC"),
-                Arrays.asList("AGGTCT", "AGGGTT","ATGGCC", "ATCCCC"),
+                Arrays.asList("AGGTCT", "AGGGGT","ATGGCC", "ATCCCC"),
+                Arrays.asList("AGGTCT", "AGGGGT","ATGGCC", "ATCCCC"),
                 Arrays.asList("")
                 );
         
@@ -124,6 +150,23 @@ public class XmenApplicationTests {
         
         data.put("human", human);
 
+        Adn mutant2SecuencesComparation = new Adn(
+        		"es mutante",
+                Arrays.asList("AGGTGG", "AGGGGT"),
+                Arrays.asList("AGGTGG", "AGGGGT"),
+                Arrays.asList("")
+                );
+        
+        data.put("mutantTwo", mutant2SecuencesComparation);
+        
+        Adn human2SecuencesComparation = new Adn(
+        		"no es mutante",
+        		Arrays.asList("AGGTCT", "AGGGGT"),
+                Arrays.asList(""),
+                Arrays.asList("AGGTCT", "AGGGGT")
+                );
+        
+        data.put("humanTwo", human2SecuencesComparation);
 
         return data;
     }
