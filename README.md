@@ -1,4 +1,4 @@
-# RetoMercado
+# XmenApp
 Reto de mercado libre "X-Men detector de mutantes"
 
 Instrucciones ejecucion de API.
